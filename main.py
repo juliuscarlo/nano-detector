@@ -4,6 +4,11 @@ import numpy as np
 import cv2
 import pathlib
 
+# to-do: limit freq, limit prob, write to same img
+# refactor, modularize
+# logging module
+# testcases 
+
 # label loader
 def load_labels(filename):
   with open(filename, 'r') as f:
@@ -41,8 +46,8 @@ def analyze_image(interpreter, image, top_k=1):
 # Load the model into memory
 # (a .tflite model containing the execution graph)
 
-model_path = "data/saved_models/lite-model_ssd_mobilenet_v1_1_metadata_2.tflite"
-labels_path = "data/saved_models/labelmap.txt"
+model_path = "data/saved_models/inception/inception_resnet_v2.tflite"
+labels_path = "data/saved_models/inception/labels.txt"
 
 # Load model and allocate tensorfs
 interpreter = tflite.Interpreter(model_path)
@@ -54,9 +59,10 @@ print("Image Shape (", width, ",", height, ")")
 
 # Get input and output tensors
 
-# input_details = interpreter.get_input_details()
-# print(input_details)
-# output_details = interpreter.get_output_details()
+input_details = interpreter.get_input_details()
+print("input_details: ", input_details)
+output_details = interpreter.get_output_details()
+print("output_details: ", output_details)
 
 # Transform / Preprocess the data (e.g. resize, change format)
 # (Raw data regularly does not match the input data format expected by the model)
@@ -74,7 +80,7 @@ print("Image Shape (", width, ",", height, ")")
 
 # Test the model
 
-img = cv2.imread("./data/images/examples/test/object_6.jpg")
+img = cv2.imread("./data/images/examples/banana_0.jpg")
 input_data = cv2.resize(img, (width, height))
 input_data = np.expand_dims(input_data, axis=0)
 print(input_data.shape)
@@ -86,7 +92,7 @@ print(labels)
 print(labels[0])
 
 
-def draw_rect(image, box):
+def draw_rect(image, box, text):
     h = image.shape[0]
     w = image.shape[1]
     y_min = int(max(1, (box[0] * h)))
@@ -95,27 +101,31 @@ def draw_rect(image, box):
     x_max = int(min(w, (box[3] * w)))
     
     # draw a rectangle on the image
-    cv2.rectangle(image, (x_min, y_min), (x_max, y_max), (155, 255, 0), 2)
+    cv2.rectangle(image, (x_min, y_min), (x_max, y_max), (60, 200, 12), 3)
+    draw_text(image, x_min, y_min, text)
 
+def draw_text(image, x, y, text):
+    cv2.putText(image, text, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (60,200,12), 2)
+
+# copy the base image
+base_img = img.copy()
 
 for i in range(min(int(freq), 3)):
     category_label = labels[int(category[i])]
     print(location[i], category[i], score[i], category_label)
 
-    # copy the base image
-    base_img = img.copy()
     box = location[i]
 
     # add bounding boxes (top, left, bot, right)
     # t, l, b, r = location[i][:2]*
-    draw_rect(base_img, box)
+    draw_rect(base_img, box, category_label)
 
     #augmented_image = cv.rectangle
 
     # add text label to box
 
-    # save image to output folder data/images/examples/test/out
-    cv2.imwrite("data/images/examples/test/out/" + str(i) + ".jpg", base_img)
+# save image to output folder data/images/examples/test/out
+cv2.imwrite("data/images/examples/test/out/" + "annotated" + ".jpg", base_img)
 
 
 
