@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.fernuni-hagen.de/gmaf" elementFormDefault="qualified"
+    xmlns="gmaf_schema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:gmaf-data>
+        <xs:file>IMG_0001.png</xs:file>
+        <xs:date>14.04.2021</xs:date>
+        <xs:objects>
+            <xs:object>
+                <xs:term>cat</xs:term>
+                <xs:bounding-box>
+                    <xs:x>320</xs:x>
+                    <xs:y>121</xs:y>
+                    <xs:width>423</xs:width>
+                    <xs:height>522</xs:height>
+                </xs:bounding-box>
+                <xs:probability>0.94</xs:probability>
+            </xs:object>
+        </xs:objects>
+    </xs:gmaf-data>
+</xs:schema>
