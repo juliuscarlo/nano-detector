@@ -1,0 +1,9 @@
+
+model_path : "data/models/coco_efficientdet_v4/lite-model_efficientdet_lite4_detection_metadata_2.tflite"
+label_path : "data/models/coco_efficientdet_v4/labelmap.txt"
+input_images_path : "data/in"
+xml_output_path : "data/out/xml"
+augmented_images_path : "data/out/augmented"
+
+max_detections : 5
+min_probability : 0.75
