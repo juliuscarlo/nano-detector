@@ -3,9 +3,9 @@
 class LabelLoader:
 
     @staticmethod
-    def load_labels(data_config):
+    def load_labels(path):
         """Load label data from specified path"""
-        with open(filename, 'r') as f:
+        with open(path, 'r') as f:
             return [line.strip() for line in f.readlines()]
 
 

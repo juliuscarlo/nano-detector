@@ -12,3 +12,18 @@ https://www.tensorflow.org/lite/guide/python
     sudo apt-get update
     sudo apt-get install python3-tflite-runtime
 
+
+
+# TO-Dos
+
+docstrings
+
+logging
+    time the duration of the annotations and show t/image
+    start and end
+    if its running
+    if folder was empty
+    etc
+
+unit-tests
+

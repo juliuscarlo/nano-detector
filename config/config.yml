@@ -1,9 +1,31 @@
+### Config file for the object detection program.
 
-model_path : "data/models/coco_efficientdet_v4/lite-model_efficientdet_lite4_detection_metadata_2.tflite"
-label_path : "data/models/coco_efficientdet_v4/labelmap.txt"
-input_images_path : "data/in"
-xml_output_path : "data/out/xml"
-augmented_images_path : "data/out/augmented"
+## Project root path
+# Path to the projects main.py
+main_path: "/home/julius/code/nano-detector/main.py"
 
-max_detections : 5
-min_probability : 0.75
+## Model paths
+# Relative path of saved tflite model
+model_path: "data/models/coco_efficientdet_v4/lite-model_efficientdet_lite4_detection_metadata_2.tflite"
+# Relative path of label file corresponding to the saved tflite model
+label_path: "data/models/coco_efficientdet_v4/labelmap.txt"
+
+## In/Out paths
+# Relative path of input images folder
+input_images_path: "data/in"
+# Relative path of xml output folder
+xml_output_path: "data/out/xml"
+# Relative path of augmented images output folder
+augmented_images_path: "data/out/augmented"
+
+## Detector configuration
+# Maximum number of detections permitted per image, regardless of probability
+max_detections: 5
+# Minimum probability to accept a detection
+min_probability: 0.75
+
+## Logging
+# Logging level
+logging_level: logging.INFO
+# Relative path to logs file
+logs_path: "logs/detector.log"

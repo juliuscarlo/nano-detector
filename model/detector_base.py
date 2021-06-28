@@ -1,5 +1,4 @@
-    """This is a ...
-    """
+"""Contains a base class that specifies abstract methods to be implemented by the detector."""
 
 from abc import ABC, abstractmethod
 from config import config
@@ -13,6 +12,7 @@ from config import config
 
 # Build an interpreter, allocate tensors (set input tensor values)
 
+
 class BaseClass(ABC):
     def __init__(self, cfg):
         self.config = config.Config()
@@ -22,17 +22,17 @@ class BaseClass(ABC):
         pass
 
     @abstractmethod
-    def load_image(self):
+    def load_images(self):
         pass
 
     @abstractmethod
-    def _preprocess_data(self):
+    def preprocess_data(self):
         pass
 
     @abstractmethod
-    def _run_inference(self):
+    def run_inference(self):
         pass
 
     @abstractmethod
-    def _export_results(self):
+    def export_results(self):
         pass

@@ -10,7 +10,7 @@ class Logger():
     def __init__(self, logging_level, root_dir, logs_path):
 
         # Set up the logging with level and logfile path
-        logging.basicConfig(level=logging_level,
+        logging.basicConfig(level=logging.INFO,
                             filename=os.path.join(root_dir, logs_path))
 
     def log(self, event):
@@ -19,5 +19,6 @@ class Logger():
     @staticmethod
     def current_time():
         """Returns the current timedate."""
+
         now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
         return now

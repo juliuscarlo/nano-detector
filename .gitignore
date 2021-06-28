@@ -1,6 +1,7 @@
 .vscode/*
 !.vscode/settings.json
 
-.data/*
+data/*
+
 
 __pycache__/
