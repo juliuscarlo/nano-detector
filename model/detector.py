@@ -1,4 +1,6 @@
-"""Implements the abstract methods of the detector base class.
+"""Detector module for object detection.
+
+Implements the abstract methods of the detector base class.
 
 Author: Julius Nick (julius.nick@gmail.com)
 

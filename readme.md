@@ -18,6 +18,8 @@ https://www.tensorflow.org/lite/guide/python
 
 docstrings
 
+remove print statements for final version
+
 logging
     time the duration of the annotations and show t/image
     start and end
