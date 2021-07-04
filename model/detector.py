@@ -1,6 +1,6 @@
 """Implements the abstract methods of the detector base class.
 
-Developer: Julius Nick (julius.nick@gmail.com)
+Author: Julius Nick (julius.nick@gmail.com)
 
 """
 
@@ -11,6 +11,7 @@ import numpy as np
 import cv2
 import os
 
+from model.detector_base import BaseClass
 from model import inference
 from model import label_loader
 from utils import image_transformer
@@ -20,8 +21,6 @@ from utils import image_loader
 from utils import xml_writer
 
 import utils.logger
-
-from model.detector_base import BaseClass
 
 
 class Detector(BaseClass):
@@ -52,7 +51,7 @@ class Detector(BaseClass):
         self.input_shape = (self.input_width, self.input_height)
         print(self.input_shape)
 
-        # Load the models labels for matching numerical categories output by the model to human readable
+        # Load the model labels for matching numerical output of the model to categories
         self.labels = label_loader.load(self.config.label_path)
 
         self.logger.log("Model prepared.")
@@ -84,23 +83,26 @@ class Detector(BaseClass):
         self.logger.log("Ran inference for image: " + self.img_name)
 
     def export_results(self):
-        # export xml to folder from config
-        # augment input image if this option is specified
+        # export xml to out folder and augment input images with detected object information
         base_img = self.img.copy()
 
         objects = []
 
         # Relevant objects are only considered up to the specified max_detections threshold
         for i in range(min(int(self.freq), self.config.max_detections)):
+            score = self.score[i]
+            if score < self.config.min_probability:
+                break
             category_label = self.labels[int(self.category[i])]
             objects.append(
-                {"loc": self.location[i], "probability": self.score[i], "term": category_label})
+                {"loc": self.location[i], "probability": score, "term": category_label})
 
             box = self.location[i]
+            # concatenate the box label, consisting of the label and probability
+            text = category_label + "@" + "{:.2f}".format(score)
 
-            augmentor.label(base_img, box, category_label)
+            augmentor.label(base_img, box, text)
 
-            # break this loop if the min_probability for detections is breached
 
         cv2.imwrite(os.path.join(
             self.config.augmented_images_path, self.img_name), base_img)
