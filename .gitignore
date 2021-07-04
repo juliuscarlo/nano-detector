@@ -2,6 +2,9 @@
 !.vscode/settings.json
 
 data/*
+backup/*
+
+logs/detector.log
 
 
 __pycache__/

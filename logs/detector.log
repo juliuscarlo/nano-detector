@@ -215,3 +215,45 @@ INFO:root:2021/06/28 20:25:30 Preprocessed image: 0000.png
 INFO:root:2021/06/28 20:25:35 Ran inference for image: 0000.png
 INFO:root:2021/06/28 20:25:35 Exported results for image: 0000.png
 INFO:root:2021/06/28 20:25:35 All images processed. Augmented images and XML are in the specified out folder.
+INFO:root:2021/06/28 20:51:33 Logger initialized.
+INFO:root:2021/06/28 20:51:33 Tflite Interpreter initialized.
+INFO:root:2021/06/28 20:51:33 Model prepared.
+INFO:root:2021/06/28 20:51:33 Loaded image queue: ['0000.png', '0002.png', '0001.png']
+INFO:root:2021/06/28 20:51:33 Preprocessed image: 0001.png
+INFO:root:2021/06/28 20:51:38 Ran inference for image: 0001.png
+INFO:root:2021/06/28 20:51:38 Exported results for image: 0001.png
+INFO:root:2021/06/28 20:51:38 Preprocessed image: 0002.png
+INFO:root:2021/06/28 20:51:42 Ran inference for image: 0002.png
+INFO:root:2021/06/28 20:51:43 Exported results for image: 0002.png
+INFO:root:2021/06/28 20:51:43 Preprocessed image: 0000.png
+INFO:root:2021/06/28 20:51:47 Ran inference for image: 0000.png
+INFO:root:2021/06/28 20:51:48 Exported results for image: 0000.png
+INFO:root:2021/06/28 20:51:48 All images processed. Augmented images and XML are in the specified out folder.
+INFO:root:2021/06/28 20:58:37 Logger initialized.
+INFO:root:2021/06/28 20:58:37 Tflite Interpreter initialized.
+INFO:root:2021/06/28 20:58:37 Model prepared.
+INFO:root:2021/06/28 20:58:37 Loaded image queue: ['0000.png', '0002.png', '0001.png']
+INFO:root:2021/06/28 20:58:37 Preprocessed image: 0001.png
+INFO:root:2021/06/28 20:58:42 Ran inference for image: 0001.png
+INFO:root:2021/06/28 20:58:42 Exported results for image: 0001.png
+INFO:root:2021/06/28 20:58:42 Preprocessed image: 0002.png
+INFO:root:2021/06/28 20:58:46 Ran inference for image: 0002.png
+INFO:root:2021/06/28 20:58:47 Exported results for image: 0002.png
+INFO:root:2021/06/28 20:58:47 Preprocessed image: 0000.png
+INFO:root:2021/06/28 20:58:51 Ran inference for image: 0000.png
+INFO:root:2021/06/28 20:58:52 Exported results for image: 0000.png
+INFO:root:2021/06/28 20:58:52 All images processed. Augmented images and XML are in the specified out folder.
+INFO:root:2021/07/04 20:15:15 Logger initialized.
+INFO:root:2021/07/04 20:15:15 Tflite Interpreter initialized.
+INFO:root:2021/07/04 20:15:15 Model prepared.
+INFO:root:2021/07/04 20:15:15 Loaded image queue: ['0000.png', '0002.png', '0001.png']
+INFO:root:2021/07/04 20:15:15 Preprocessed image: 0001.png
+INFO:root:2021/07/04 20:15:20 Ran inference for image: 0001.png
+INFO:root:2021/07/04 20:15:20 Exported results for image: 0001.png
+INFO:root:2021/07/04 20:15:20 Preprocessed image: 0002.png
+INFO:root:2021/07/04 20:15:25 Ran inference for image: 0002.png
+INFO:root:2021/07/04 20:15:25 Exported results for image: 0002.png
+INFO:root:2021/07/04 20:15:26 Preprocessed image: 0000.png
+INFO:root:2021/07/04 20:15:30 Ran inference for image: 0000.png
+INFO:root:2021/07/04 20:15:30 Exported results for image: 0000.png
+INFO:root:2021/07/04 20:15:30 All images processed. Augmented images and XML are in the specified out folder.
