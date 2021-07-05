@@ -1,4 +1,10 @@
-"""Unit test for the utils module."""
+"""Unit tests for the utils module.
+
+Performs the specified unit tests.
+
+Author: Julius Nick (julius.nick@gmail.com)
+
+"""
 
 import unittest
 import cv2
@@ -22,14 +28,14 @@ class TestImageTransformer(unittest.TestCase):
 class TestImageLoader(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.resource_path = os.path.normpath("resources")
+        cls.resource_path = os.path.normpath("tests/resources")
         cls.test_image = 255 * np.ones(shape=[50, 80, 3], dtype=np.uint8)
         cv2.imwrite(os.path.join(cls.resource_path, "test_image_1.png"), cls.test_image)
         cv2.imwrite(os.path.join(cls.resource_path, "test_image_2.png"), cls.test_image)
 
     @classmethod
     def tearDownClass(cls):
-        cls.resource_path = os.path.normpath("resources")
+        cls.resource_path = os.path.normpath("tests/resources")
         os.remove(os.path.join(cls.resource_path, "test_image_1.png"))
         os.remove(os.path.join(cls.resource_path, "test_image_2.png"))
 

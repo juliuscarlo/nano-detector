@@ -1,4 +1,12 @@
-"""Loads images and creates a queue for batch processing."""
+"""Module to load image paths from a directory and create a queue for batch processing.
+
+Contains an ImageLoader class that is used to initialize a queue and contains methods for
+popping image names from this queue.
+
+Author: Julius Nick (julius.nick@gmail.com)
+
+"""
+
 import cv2
 import os
 
@@ -21,6 +29,3 @@ class ImageLoader:
         self.img = cv2.imread(img_path)
         return self.img, self.img_name
 
-# def load(file="data/images/div2k/0178.png"):
-#     img = cv2.imread(file)
-#     return img

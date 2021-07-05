@@ -1,3 +1,12 @@
+"""Module to write information about objects in an image to an XML file.
+
+Creates an elementtree from specified object information, which can be used to generate
+XML files.
+
+Author: Julius Nick (julius.nick@gmail.com)
+
+"""
+
 import xml.etree.cElementTree as etree
 
 
@@ -53,6 +62,3 @@ def write(tree, path):
     tree.write(path,
                encoding='utf-8', xml_declaration=True)
 
-# tree = create_tree(object_list=[
-#                    {"term": "cat", "x": 231, "y": 132, "width": 300, "height": 178, "probability": 0.93}])
-# write()

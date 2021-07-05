@@ -1,4 +1,10 @@
-"""A Logger class to provide logging functionality to other modules."""
+"""Logger module for the object detection program.
+
+Contains a logger class to provide logging functionality.
+
+Author: Julius Nick (julius.nick@gmail.com)
+
+"""
 
 import logging
 import os

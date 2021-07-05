@@ -22,7 +22,7 @@ augmented_images_path: "data/out/augmented"
 # Maximum number of detections permitted per image, regardless of probability
 max_detections: 5
 # Minimum probability to accept a detection
-min_probability: 0.75
+min_probability: 0.6
 
 ## Logging
 # Logging level
