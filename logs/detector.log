@@ -223,3 +223,75 @@ INFO:root:2021/07/05 12:04:29 Preprocessed image: 0000.png
 INFO:root:2021/07/05 12:04:34 Ran inference for image: 0000.png
 INFO:root:2021/07/05 12:04:34 Exported results for image: 0000.png
 INFO:root:2021/07/05 12:04:34 All images processed. Augmented images and XML are in the specified out folder.
+INFO:root:2021/07/08 08:17:30 Logger initialized.
+INFO:root:2021/07/08 08:17:30 Tflite Interpreter initialized.
+INFO:root:2021/07/08 08:17:30 Model prepared.
+INFO:root:2021/07/08 08:17:30 Loaded image queue: ['0000.png', '0002.png', '0001.png']
+INFO:root:2021/07/08 08:17:31 Preprocessed image: 0001.png
+INFO:root:2021/07/08 08:17:35 Ran inference for image: 0001.png
+INFO:root:2021/07/08 08:17:35 Exported results for image: 0001.png
+INFO:root:2021/07/08 08:17:35 Preprocessed image: 0002.png
+INFO:root:2021/07/08 08:17:40 Ran inference for image: 0002.png
+INFO:root:2021/07/08 08:17:40 Exported results for image: 0002.png
+INFO:root:2021/07/08 08:17:40 Preprocessed image: 0000.png
+INFO:root:2021/07/08 08:17:45 Ran inference for image: 0000.png
+INFO:root:2021/07/08 08:17:45 Exported results for image: 0000.png
+INFO:root:2021/07/08 08:17:45 All images processed. Augmented images and XML are in the specified out folder.
+INFO:root:2021/07/08 08:54:41 Logger initialized.
+INFO:root:2021/07/08 08:54:41 Tflite Interpreter initialized.
+INFO:root:2021/07/08 08:54:48 Logger initialized.
+INFO:root:2021/07/08 08:54:48 Tflite Interpreter initialized.
+INFO:root:2021/07/08 08:55:03 Logger initialized.
+INFO:root:2021/07/08 08:55:03 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:00:28 Logger initialized.
+INFO:root:2021/07/08 09:00:28 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:00:35 Logger initialized.
+INFO:root:2021/07/08 09:00:35 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:01:38 Logger initialized.
+INFO:root:2021/07/08 09:01:38 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:02:04 Logger initialized.
+INFO:root:2021/07/08 09:02:04 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:02:27 Logger initialized.
+INFO:root:2021/07/08 09:02:27 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:02:43 Logger initialized.
+INFO:root:2021/07/08 09:02:43 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:02:49 Logger initialized.
+INFO:root:2021/07/08 09:02:49 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:03:50 Logger initialized.
+INFO:root:2021/07/08 09:03:50 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:04:05 Logger initialized.
+INFO:root:2021/07/08 09:04:05 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:05:14 Logger initialized.
+INFO:root:2021/07/08 09:05:14 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:05:23 Logger initialized.
+INFO:root:2021/07/08 09:05:23 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:10:16 Logger initialized.
+INFO:root:2021/07/08 09:10:16 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:10:26 Logger initialized.
+INFO:root:2021/07/08 09:10:26 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:11:07 Logger initialized.
+INFO:root:2021/07/08 09:11:07 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:11:07 Model prepared.
+INFO:root:2021/07/08 09:11:07 Loaded image queue: ['0000.png', '0002.png', '0001.png']
+INFO:root:2021/07/08 09:11:07 Preprocessed image: 0001.png
+INFO:root:2021/07/08 09:11:11 Ran inference for image: 0001.png
+INFO:root:2021/07/08 09:11:12 Exported results for image: 0001.png
+INFO:root:2021/07/08 09:11:12 Preprocessed image: 0002.png
+INFO:root:2021/07/08 09:11:16 Ran inference for image: 0002.png
+INFO:root:2021/07/08 09:11:17 Exported results for image: 0002.png
+INFO:root:2021/07/08 09:11:17 Preprocessed image: 0000.png
+INFO:root:2021/07/08 09:11:21 Ran inference for image: 0000.png
+INFO:root:2021/07/08 09:11:22 Exported results for image: 0000.png
+INFO:root:2021/07/08 09:11:22 All images processed. Augmented images and XML are in the specified out folder.
+INFO:root:2021/07/08 09:11:31 Logger initialized.
+INFO:root:2021/07/08 09:11:31 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:12:29 Logger initialized.
+INFO:root:2021/07/08 09:12:29 Tflite Interpreter initialized.
+INFO:root:2021/07/08 09:12:40 Logger initialized.
+INFO:root:2021/07/08 09:12:40 Tflite Interpreter initialized.
+INFO:root:2021/07/08 23:28:17 Logger initialized.
+INFO:root:2021/07/08 23:28:17 Tflite Interpreter initialized.
+INFO:root:2021/07/08 23:28:22 Logger initialized.
+INFO:root:2021/07/08 23:28:22 Tflite Interpreter initialized.
+INFO:root:2021/07/08 23:29:27 Logger initialized.
+INFO:root:2021/07/08 23:29:27 Tflite Interpreter initialized.

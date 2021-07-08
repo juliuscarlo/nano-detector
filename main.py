@@ -1,25 +1,45 @@
-"""Entry point for running the image annotation program.
+"""Entry point for running the image annotation program from the command line.
 
-Executes the individual steps for image annotation sequentially.
+Executes the specified use-case (upload images, check system status, annotate
+images, retrieve results) depending on the specified mode argument.
 
 Author: Julius Nick (julius.nick@gmail.com)
 
 """
 
 from model.detector import Detector
+import argparse
+import os
 
 
 def run():
-    """Run object detection and image annotation."""
+    """Run the Image Annotation System."""
     detector = Detector()
-    detector.prepare_model()
-    detector.load_images()
+    
+    # Initialize an ArgumentParser and parse the given arguments
+    parser = argparse.ArgumentParser(description = "Image Annotation System")
+    parser.add_argument("mode", type=str, help="Select the mode, which is one of: [upload_images, retrieve_results, annotate, view_logs].")
+    args = parser.parse_args()
 
-    # A queue of images is analyzed image by image sequentially, until empty
-    while detector.img_loader.queue:
-        detector.preprocess_data()
-        detector.run_inference()
-        detector.export_results()
+    if args.mode == "upload_images":
+        print("input directory: " + detector.config.input_images_path)
+
+    if args.mode == "retrieve_results":
+        print("xml output path (from project root): " + detector.config.xml_output_path)
+        print("augmented images path (from project root): " + detector.config.augmented_images_path)
+
+    if args.mode == "view_logs":
+        os.system("tail -f -n 100 logs/detector.log")
+    
+    if args.mode == "annotate":
+        detector.prepare_model()
+        detector.load_images()
+
+        # A queue of images is analyzed image by image sequentially, until empty
+        while detector.img_loader.queue:
+            detector.preprocess_data()
+            detector.run_inference()
+            detector.export_results()
 
 
 if __name__ == "__main__":
