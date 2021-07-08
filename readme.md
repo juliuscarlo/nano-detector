@@ -14,8 +14,8 @@ https://www.tensorflow.org/lite/guide/python
 
 # Installing the Image Annotation System
 
-1. Clone the repository to the desired location.
-2. Adjust the config/config.yml to suit your specific preferences, particularly:
+## 1. Clone the repository to the desired location.
+## 2. Adjust the config/config.yml to suit your specific preferences, particularly:
     - paths to the tflite model file and label file
     - input- and output paths
     - the maximum number of objects to detect per image
