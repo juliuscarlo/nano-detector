@@ -26,6 +26,6 @@ min_probability: 0.6
 
 ## Logging
 # Logging level
-logging_level: logging.INFO
+logging_level: INFO
 # Relative path to logs file
 logs_path: "logs/detector.log"
