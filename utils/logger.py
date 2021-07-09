@@ -8,7 +8,6 @@ Author: Julius Nick (julius.nick@gmail.com)
 
 import logging
 import os
-from config import config
 from datetime import datetime
 
 
