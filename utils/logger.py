@@ -12,11 +12,11 @@ from config import config
 from datetime import datetime
 
 
-class Logger():
+class Logger:
     def __init__(self, logging_level, root_dir, logs_path):
 
         # Set up the logging with level and logfile path
-        logging.basicConfig(level=logging.INFO,
+        logging.basicConfig(level=logging_level,
                             filename=os.path.join(root_dir, logs_path))
 
     def log(self, event):
