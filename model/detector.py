@@ -6,8 +6,8 @@ Author: Julius Nick (julius.nick@gmail.com)
 
 """
 
-# import tensorflow as tf
-import tflite_runtime.interpreter as tflite
+import tensorflow as tf
+# import tflite_runtime.interpreter as tflite
 
 import numpy as np
 import cv2
@@ -40,8 +40,8 @@ class Detector(BaseClass):
         self.logger.log("Logger initialized.")
 
         # Generate an instance of the tflite Interpreter class
-        self.interpreter = tflite.Interpreter(self.config.model_path)
-        # self.interpreter = tf.lite.Interpreter(self.config.model_path)
+        # self.interpreter = tflite.Interpreter(self.config.model_path)
+        self.interpreter = tf.lite.Interpreter(self.config.model_path)
 
         self.logger.log("Tflite Interpreter initialized.")
 
@@ -52,7 +52,6 @@ class Detector(BaseClass):
         self.input_height = self.interpreter.get_input_details()[0]["shape"][1]
         self.input_width = self.interpreter.get_input_details()[0]["shape"][2]
         self.input_shape = (self.input_width, self.input_height)
-        print(self.input_shape)
 
         # Load the model labels for matching numerical output of the model to categories
         self.labels = label_loader.load(self.config.label_path)
@@ -62,7 +61,6 @@ class Detector(BaseClass):
     def load_images(self):
         self.img_loader = image_loader.ImageLoader(
             self.config.input_images_path)
-        print(self.img_loader.queue)
 
         if not self.img_loader.queue:
             self.logger.log(
