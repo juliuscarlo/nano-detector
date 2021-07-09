@@ -27,10 +27,25 @@ import utils.logger
 
 
 class Detector(BaseClass):
-    """Inherits from the detector base class and implements its abstract methods for the object detection."""
+    """Inherits from the detector base class and implements its abstract methods
+    for the object detection and image annotation.
+    """
 
     def __init__(self):
+        """Initializes the logger and a tflite interpreter."""
         super().__init__(config)
+
+        # Initialize the instance attributes of a Detector
+        self.todays_date = None
+        self.input_height = None
+        self.input_width = None
+        self.input_shape = None
+        self.labels = None
+        self.img_loader = None
+        self.img = None
+        self.img_name = None
+        self.input_data = None
+        self.location, self.category, self.score, self.freq = [None] * 4
 
         # Initialize a logger
         self.logger = utils.logger.Logger(logging_level=self.config.logging_level,
@@ -46,6 +61,7 @@ class Detector(BaseClass):
         self.logger.log("Tflite Interpreter initialized.")
 
     def prepare_model(self):
+        """Get the input dimensions of the model and load the label file."""
         self.interpreter.allocate_tensors()
 
         # Get the models input dimensions as the target dimension for an image to be analyzed
@@ -54,11 +70,12 @@ class Detector(BaseClass):
         self.input_shape = (self.input_width, self.input_height)
 
         # Load the model labels for matching numerical output of the model to categories
-        self.labels = label_loader.load(self.config.label_path)
+        self.labels = label_loader.LabelLoader.load_labels(self.config.label_path)
 
         self.logger.log("Model prepared.")
 
     def load_images(self):
+        """Load the images to be annotated and put them in a queue to be processed later."""
         self.img_loader = image_loader.ImageLoader(
             self.config.input_images_path)
 
@@ -70,21 +87,22 @@ class Detector(BaseClass):
                             str(self.img_loader.queue))
 
     def preprocess_data(self):
-        self.img, self.img_name = self.img_loader.load_img(
-            self.config.input_images_path)
-        self.input_data = image_transformer.resize(self.img, self.input_shape)
+        """Preprocess the image for the chosen model."""
+        self.img, self.img_name = self.img_loader.load_img(self.config.input_images_path)
+        self.input_data = image_transformer.Transformer.resize(self.img, self.input_shape)
         self.input_data = np.expand_dims(self.input_data, axis=0)
 
         self.logger.log("Preprocessed image: " + self.img_name)
 
     def run_inference(self):
-        self.location, self.category, self.score, self.freq = inference.analyze_image(
+        """Run inference on a preprocessed image."""
+        self.location, self.category, self.score, self.freq = inference.Inference.analyze_image(
             self.interpreter, self.input_data)
 
         self.logger.log("Ran inference for image: " + self.img_name)
 
     def export_results(self):
-        # export xml to out folder and augment input images with detected object information
+        """Export the results (XML/augmented image)."""
         base_img = self.img.copy()
 
         objects = []
@@ -102,19 +120,18 @@ class Detector(BaseClass):
             # concatenate the box label, consisting of the label and probability
             text = category_label + "@" + "{:.2f}".format(score)
 
+            # put the concatenated box label in the image
             augmentor.label(base_img, box, text)
 
         cv2.imwrite(os.path.join(
             self.config.augmented_images_path, self.img_name), base_img)
-
-        print(objects)
 
         # Get todays date for the XML export
         self.todays_date = date.today().strftime("%d.%m.%Y")
 
         # Generate the tree and export the XML file
         tree = xml_writer.create_tree(
-            img=self.img, object_list=objects, filename=self.img_name, date=self.todays_date)
+            img_shape=self.img.shape, object_list=objects, filename=self.img_name, date=self.todays_date)
         xml_writer.write(tree, path=os.path.join(
             self.config.xml_output_path, (os.path.splitext(self.img_name)[0] + ".xml")))
 

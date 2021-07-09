@@ -12,7 +12,9 @@ import yaml
 
 class Config:
     def __init__(self):
-        """Get the python object using the from_yml method and set up the corresponding variables."""
+        """Get python objects using the from_yml method and set up the
+        corresponding attributes.
+        """
 
         params = self.from_yml()
 
@@ -32,7 +34,11 @@ class Config:
 
     @classmethod
     def from_yml(cls, cfg="config/config.yml"):
-        """Parses the config from a yml file and returns a python object."""
+        """Parses the config from a yml file and returns a python object.
+
+        Args:
+            cfg: the config.yml file that should be parsed
+        """
 
         with open(cfg, "r") as file:
             params = yaml.safe_load(file)

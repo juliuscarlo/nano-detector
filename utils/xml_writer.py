@@ -1,7 +1,7 @@
 """Module to write information about objects in an image to an XML file.
 
-Creates an elementtree from specified object information, which can be used to generate
-the corresponding XML files.
+Creates an element tree from specified object information, which can be used to generate
+a corresponding XML file.
 
 Author: Julius Nick (julius.nick@gmail.com)
 
@@ -10,7 +10,16 @@ Author: Julius Nick (julius.nick@gmail.com)
 import xml.etree.cElementTree as etree
 
 
-def create_tree(img, object_list, filename="filename.pic", date="01.01.1999"):
+def create_tree(img_shape, object_list, filename="filename.pic", date="01.01.1999"):
+    """Creates an element tree structure, which can easily be exported to an XML
+    file.
+
+    Args:
+        img_shape: the shape of the image (resolution)
+        object_list: the list of detected objects
+        filename: the filename of the image
+        date: the date on which the image is annotated (current date)
+    """
     root = etree.Element("xs:schema", {"targetNamespace": "http://www.fernuni-hagen.de/gmaf",
                                        "elementFormDefault": "qualified", "xmlns": "gmaf_schema.xsd",
                                        "xmlns:xs": "http://www.w3.org/2001/XMLSchema"})
@@ -29,7 +38,7 @@ def create_tree(img, object_list, filename="filename.pic", date="01.01.1999"):
         bounding_box = etree.SubElement(object, "xs:bounding-box")
 
         print(item["loc"])
-        box = convert_box(img, relative_box=item["loc"])
+        box = convert_box(img_shape, relative_box=item["loc"])
 
         etree.SubElement(bounding_box, "xs:x").text = str(box[0])
         etree.SubElement(bounding_box, "xs:y").text = str(box[1])
@@ -43,10 +52,16 @@ def create_tree(img, object_list, filename="filename.pic", date="01.01.1999"):
     return tree
 
 
-def convert_box(img, relative_box):
-    """ Calculates absolute from relative coordinates of a box for the xml schema. """
-    h = img.shape[0]
-    w = img.shape[1]
+def convert_box(img_shape, relative_box):
+    """Calculates absolute from relative coordinates of a bounding box for the
+    xml schema. Returns the absolute bounding box values.
+
+    Args:
+        img_shape: the shape of the image (resolution)
+        relative_box: relative bounding box
+    """
+    h = img_shape[0]
+    w = img_shape[1]
     y_min = int(max(1, (relative_box[0] * h)))
     x_min = int(max(1, (relative_box[1] * w)))
     y_max = int(min(h, (relative_box[2] * h)))
@@ -61,5 +76,9 @@ def convert_box(img, relative_box):
 
 
 def write(tree, path):
-    tree.write(path,
-               encoding='utf-8', xml_declaration=True)
+    """ Writes an element tree structure to an XML file.
+    Args:
+        tree: the element tree
+        path: the path where the XML file is saved
+    """
+    tree.write(path, encoding='utf-8', xml_declaration=True)

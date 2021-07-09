@@ -1,28 +1,51 @@
+"""Inference module for object detection.
+
+Provides methods to run inference with an interpreter and an image.
+
+Author: Julius Nick (julius.nick@gmail.com)
+
+"""
+
 import numpy as np
 
 
-def set_input_tensor(interpreter, image):
-    tensor_index = interpreter.get_input_details()[0]["index"]
-    input_tensor = interpreter.tensor(tensor_index)()[0]
-    input_tensor[:, :] = image
+class Inference:
+    @staticmethod
+    def set_input_tensor(interpreter, image):
+        """Sets the input tensor for inference.
 
+        Args:
+            interpreter: instance of the tflite interpreter.
+            image: the image for which inference should be run.
+        """
+        tensor_index = interpreter.get_input_details()[0]["index"]
+        input_tensor = interpreter.tensor(tensor_index)()[0]
+        input_tensor[:, :] = image
 
-def analyze_image(interpreter, image):
-    set_input_tensor(interpreter, image)
+    @staticmethod
+    def analyze_image(interpreter, image):
+        """ Analyzes a preprocessed image using the interpreter.
 
-    interpreter.invoke()
-    output_details = interpreter.get_output_details()
+        Args:
+            interpreter: instance of the tflite interpreter.
+            image: the image for which inference should be run
 
-    output_location = np.squeeze(
-        interpreter.get_tensor(output_details[0]["index"]))
+        """
+        Inference.set_input_tensor(interpreter, image)
 
-    output_category = np.squeeze(
-        interpreter.get_tensor(output_details[1]["index"]))
+        interpreter.invoke()
+        output_details = interpreter.get_output_details()
 
-    output_score = np.squeeze(
-        interpreter.get_tensor(output_details[2]["index"]))
+        output_location = np.squeeze(
+            interpreter.get_tensor(output_details[0]["index"]))
 
-    output_freq = np.squeeze(
-        interpreter.get_tensor(output_details[3]["index"]))
+        output_category = np.squeeze(
+            interpreter.get_tensor(output_details[1]["index"]))
 
-    return [output_location, output_category, output_score, output_freq]
+        output_score = np.squeeze(
+            interpreter.get_tensor(output_details[2]["index"]))
+
+        output_freq = np.squeeze(
+            interpreter.get_tensor(output_details[3]["index"]))
+
+        return [output_location, output_category, output_score, output_freq]

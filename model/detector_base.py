@@ -9,9 +9,9 @@ Author: Julius Nick (julius.nick@gmail.com)
 from abc import ABC, abstractmethod
 from config import config
 
-# to-do: limit freq, limit prob
 
 class BaseClass(ABC):
+    """The baseclass methods are overridden in the detector."""
     def __init__(self, cfg):
         self.config = config.Config()
 

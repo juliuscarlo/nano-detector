@@ -6,18 +6,22 @@ Author: Julius Nick (julius.nick@gmail.com)
 
 """
 
+import os
 import unittest
+
 import cv2
 import numpy as np
-import os
-from utils import image_transformer
+
 from utils import image_loader
+from utils import image_transformer
 
 
 class TestImageTransformer(unittest.TestCase):
 
     def test_image_transformer(self):
-        """Test that the image transformer transforms image dimensions as expected."""
+        """Test that the image transformer transforms image dimensions as
+        expected.
+        """
         small_image = 255 * np.ones(shape=[50, 80, 3], dtype=np.uint8)
         large_image = 255 * np.ones(shape=[70, 100, 3], dtype=np.uint8)
         target_shape = (small_image.shape[1], small_image.shape[0])
