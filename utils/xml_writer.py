@@ -1,7 +1,7 @@
 """Module to write information about objects in an image to an XML file.
 
 Creates an elementtree from specified object information, which can be used to generate
-XML files.
+the corresponding XML files.
 
 Author: Julius Nick (julius.nick@gmail.com)
 
@@ -10,12 +10,13 @@ Author: Julius Nick (julius.nick@gmail.com)
 import xml.etree.cElementTree as etree
 
 
-def create_tree(img, object_list, filename="filename.pic", date="14.02.1999"):
+def create_tree(img, object_list, filename="filename.pic", date="01.01.1999"):
     root = etree.Element("xs:schema", {"targetNamespace": "http://www.fernuni-hagen.de/gmaf",
                                        "elementFormDefault": "qualified", "xmlns": "gmaf_schema.xsd",
                                        "xmlns:xs": "http://www.w3.org/2001/XMLSchema"})
 
-    gmaf_data = etree.SubElement(root, "xs:gmaf-data")
+    collection = etree.SubElement(root, "xs:gmaf-collection")
+    gmaf_data = etree.SubElement(collection, "xs:gmaf-data")
 
     etree.SubElement(gmaf_data, "xs:file").text = filename
     etree.SubElement(gmaf_data, "xs:date").text = date
@@ -35,7 +36,8 @@ def create_tree(img, object_list, filename="filename.pic", date="14.02.1999"):
         etree.SubElement(bounding_box, "xs:width").text = str(box[2])
         etree.SubElement(bounding_box, "xs:height").text = str(box[3])
 
-        etree.SubElement(object, "xs:probability").text = str(item["probability"])
+        etree.SubElement(object, "xs:probability").text = str(
+            item["probability"])
 
     tree = etree.ElementTree(root)
     return tree
@@ -61,4 +63,3 @@ def convert_box(img, relative_box):
 def write(tree, path):
     tree.write(path,
                encoding='utf-8', xml_declaration=True)
-

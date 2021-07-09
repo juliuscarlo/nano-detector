@@ -12,6 +12,7 @@ import tflite_runtime.interpreter as tflite
 import numpy as np
 import cv2
 import os
+from datetime import date
 
 from model.detector_base import BaseClass
 from model import inference
@@ -105,12 +106,17 @@ class Detector(BaseClass):
 
             augmentor.label(base_img, box, text)
 
-
         cv2.imwrite(os.path.join(
             self.config.augmented_images_path, self.img_name), base_img)
 
         print(objects)
-        tree = xml_writer.create_tree(img=self.img, object_list=objects)
+
+        # Get todays date for the XML export
+        self.todays_date = date.today().strftime("%d.%m.%Y")
+
+        # Generate the tree and export the XML file
+        tree = xml_writer.create_tree(
+            img=self.img, object_list=objects, filename=self.img_name, date=self.todays_date)
         xml_writer.write(tree, path=os.path.join(
             self.config.xml_output_path, (os.path.splitext(self.img_name)[0] + ".xml")))
 
