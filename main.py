@@ -15,10 +15,11 @@ import os
 def run():
     """Run the Image Annotation System."""
     detector = Detector()
-    
+
     # Initialize an ArgumentParser and parse the given arguments
-    parser = argparse.ArgumentParser(description = "Image Annotation System")
-    parser.add_argument("mode", type=str, help="Select the mode, which is one of: [upload_images, retrieve_results, annotate, view_logs].")
+    parser = argparse.ArgumentParser(description="Image Annotation System")
+    parser.add_argument("mode", type=str,
+                        help="Select the mode, one of: [upload_images, retrieve_results, annotate, view_logs].")
     args = parser.parse_args()
 
     if args.mode == "upload_images":
@@ -30,7 +31,7 @@ def run():
 
     if args.mode == "view_logs":
         os.system("tail -f -n 100 logs/detector.log")
-    
+
     if args.mode == "annotate":
         detector.prepare_model()
         detector.load_images()
