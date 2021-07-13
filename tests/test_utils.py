@@ -25,7 +25,7 @@ class TestImageTransformer(unittest.TestCase):
         small_image = 255 * np.ones(shape=[50, 80, 3], dtype=np.uint8)
         large_image = 255 * np.ones(shape=[70, 100, 3], dtype=np.uint8)
         target_shape = (small_image.shape[1], small_image.shape[0])
-        transformed_image = image_transformer.resize(large_image, target_shape)
+        transformed_image = image_transformer.Transformer.resize(large_image, target_shape)
         self.assertEqual(small_image.shape, transformed_image.shape)
 
 
@@ -45,7 +45,7 @@ class TestImageLoader(unittest.TestCase):
 
     def test_image_loader(self):
         """Test that the image loader creates the expected image queue."""
-        queue = image_loader.ImageLoader.get_img_queue(self, self.resource_path)
+        queue = image_loader.ImageLoader.get_img_queue(self.resource_path)
         expected_queue = ["test_image_1.png", "test_image_2.png"]
         self.assertEqual(queue, expected_queue)
 
