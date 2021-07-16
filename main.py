@@ -22,12 +22,18 @@ def run():
                         help="Select the mode, one of: [upload_images, retrieve_results, annotate, view_logs].")
     args = parser.parse_args()
 
+    if args.mode not in ["upload_images", "retrieve_results", "annotate", "view_logs"]:
+        print(
+            "Invalid mode. Mode must be one of: [upload_images, retrieve_results, annotate, view_logs].")
+
     if args.mode == "upload_images":
         print("input directory: " + detector.config.input_images_path)
 
     if args.mode == "retrieve_results":
-        print("xml output path (from project root): " + detector.config.xml_output_path)
-        print("augmented images path (from project root): " + detector.config.augmented_images_path)
+        print("xml output path (from project root): " +
+              detector.config.xml_output_path)
+        print("augmented images path (from project root): " +
+              detector.config.augmented_images_path)
 
     if args.mode == "view_logs":
         os.system("tail -f -n 100 logs/detector.log")
