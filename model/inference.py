@@ -24,7 +24,9 @@ class Inference:
 
     @staticmethod
     def analyze_image(interpreter, image):
-        """ Analyzes a preprocessed image using the interpreter.
+        """ Analyzes a preprocessed image using the interpreter and returns the
+            output location, output category, output score and the number of detected
+            images as a list.
 
         Args:
             interpreter: instance of the tflite interpreter.

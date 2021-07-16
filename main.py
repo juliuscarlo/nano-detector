@@ -1,7 +1,7 @@
-"""Entry point for running the image annotation program from the command line.
+"""Entry point for running the image annotation system from the command line.
 
-Executes the specified use-case (upload images, check system status, annotate
-images, retrieve results) depending on the specified mode argument.
+Executes the specified mode (upload images, check system status, annotate
+images, retrieve results) depending on the chosen command line argument.
 
 Author: Julius Nick (julius.nick@gmail.com)
 

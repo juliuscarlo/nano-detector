@@ -10,11 +10,13 @@ Author: Julius Nick (julius.nick@gmail.com)
 class LabelLoader:
     @staticmethod
     def load_labels(path):
-        """Load label data from specified path. This is needed to map the
-        numerical output of the model to human readable categories.
+        """Load label data from specified path that is needed to map the
+        numerical output of the model to human readable categories. Returns
+        the categories as a list.
 
         Args:
             path: path to the labels file specified in the config.yml
+
         """
         with open(path, 'r') as f:
             return [line.strip() for line in f.readlines()]
