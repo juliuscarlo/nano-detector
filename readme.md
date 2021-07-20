@@ -103,3 +103,4 @@ conventions.
 
 - unit-tests
 
+- remove comments in detector (# tensorflow...import and inference)

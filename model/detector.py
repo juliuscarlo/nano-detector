@@ -6,8 +6,10 @@ Author: Julius Nick (julius.nick@gmail.com)
 
 """
 
-import tensorflow as tf
-# import tflite_runtime.interpreter as tflite
+import tflite_runtime.interpreter as tflite
+
+# alternative import statement for running on other platforms, see readme for details.
+# import tensorflow as tf
 
 import numpy as np
 import cv2
@@ -55,8 +57,10 @@ class Detector(BaseClass):
         self.logger.log("Logger initialized.")
 
         # Generate an instance of the tflite Interpreter class
-        # self.interpreter = tflite.Interpreter(self.config.model_path)
-        self.interpreter = tf.lite.Interpreter(self.config.model_path)
+        self.interpreter = tflite.Interpreter(self.config.model_path)
+
+        # alternative interpreter for running on other platforms, see readme for details.
+        # self.interpreter = tf.lite.Interpreter(self.config.model_path)
 
         self.logger.log("Tflite Interpreter initialized.")
 
@@ -70,7 +74,8 @@ class Detector(BaseClass):
         self.input_shape = (self.input_width, self.input_height)
 
         # Load the model labels for matching numerical output of the model to categories
-        self.labels = label_loader.LabelLoader.load_labels(self.config.label_path)
+        self.labels = label_loader.LabelLoader.load_labels(
+            self.config.label_path)
 
         self.logger.log("Model prepared.")
 
@@ -88,8 +93,10 @@ class Detector(BaseClass):
 
     def preprocess_data(self):
         """Preprocess the image for the chosen model."""
-        self.img, self.img_name = self.img_loader.load_img(self.config.input_images_path)
-        self.input_data = image_transformer.Transformer.resize(self.img, self.input_shape)
+        self.img, self.img_name = self.img_loader.load_img(
+            self.config.input_images_path)
+        self.input_data = image_transformer.Transformer.resize(
+            self.img, self.input_shape)
         self.input_data = np.expand_dims(self.input_data, axis=0)
 
         self.logger.log("Preprocessed image: " + self.img_name)
