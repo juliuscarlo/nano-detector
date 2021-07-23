@@ -25,21 +25,24 @@ class TestImageTransformer(unittest.TestCase):
         small_image = 255 * np.ones(shape=[50, 80, 3], dtype=np.uint8)
         large_image = 255 * np.ones(shape=[70, 100, 3], dtype=np.uint8)
         target_shape = (small_image.shape[1], small_image.shape[0])
-        transformed_image = image_transformer.Transformer.resize(large_image, target_shape)
+        transformed_image = image_transformer.Transformer.resize(
+            large_image, target_shape)
         self.assertEqual(small_image.shape, transformed_image.shape)
 
 
 class TestImageLoader(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.resource_path = os.path.normpath("tests/resources")
+        cls.resource_path = os.path.normpath("tests/resources/temp")
         cls.test_image = 255 * np.ones(shape=[50, 80, 3], dtype=np.uint8)
-        cv2.imwrite(os.path.join(cls.resource_path, "test_image_1.png"), cls.test_image)
-        cv2.imwrite(os.path.join(cls.resource_path, "test_image_2.png"), cls.test_image)
+        cv2.imwrite(os.path.join(cls.resource_path,
+                    "test_image_1.png"), cls.test_image)
+        cv2.imwrite(os.path.join(cls.resource_path,
+                    "test_image_2.png"), cls.test_image)
 
     @classmethod
     def tearDownClass(cls):
-        cls.resource_path = os.path.normpath("tests/resources")
+        cls.resource_path = os.path.normpath("tests/resources/temp")
         os.remove(os.path.join(cls.resource_path, "test_image_1.png"))
         os.remove(os.path.join(cls.resource_path, "test_image_2.png"))
 
