@@ -23,9 +23,7 @@ https://www.tensorflow.org/lite/guide/python
     - the maximum number of objects to detect per image
     - the minimum probability for an object to be considered a detection
 
-## Using the Image Annotation System
-
-### 4 Modes
+## Using the Image Annotation System (4 Modes)
 
 The Image Annotation System has 4 modes that can be selected via the command line interface. A single argument selects
 the mode.
@@ -34,7 +32,7 @@ Run the system using the command:
 
     python3 main.py [mode]
 
-### 1. Upload Images
+## 1. Upload Images
 
 Upload images to the input_images_path specified in the config.yml
 
@@ -94,13 +92,3 @@ Now you can run the system on other platforms for testing purposes.
 
 Relative paths in the project are handled in a way that ensures compatibility with both Windows and Linux path
 conventions.
-
-# TO-Dos
-
-- remove print statements
-
-- logging time the duration of the annotations and show t/image start and end if its running if folder was empty etc
-
-- unit-tests
-
-- remove comments in detector (# tensorflow...import and inference)
