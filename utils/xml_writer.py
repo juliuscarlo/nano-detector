@@ -35,7 +35,6 @@ def create_tree(img_shape, object_list, filename, date):
         etree.SubElement(object, "term").text = item["term"]
         bounding_box = etree.SubElement(object, "bounding-box")
 
-        print(item["loc"])
         box = convert_box(img_shape, relative_box=item["loc"])
 
         etree.SubElement(bounding_box, "x").text = str(box[0])

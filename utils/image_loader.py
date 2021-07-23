@@ -43,7 +43,6 @@ class ImageLoader:
         """
         self.img_name = self.queue.pop()
         img_path = os.path.join(images_input_path, self.img_name)
-        print(img_path)
 
         self.img = cv2.imread(img_path)
         return self.img, self.img_name
