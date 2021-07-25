@@ -18,8 +18,11 @@ class Inference:
             interpreter: instance of the tflite interpreter.
             image: the image for which inference should be run.
         """
+        # Get the tensor index of the tensor that should be set (the input tensor)
         tensor_index = interpreter.get_input_details()[0]["index"]
+        # Get the actual tensor
         input_tensor = interpreter.tensor(tensor_index)()[0]
+        # Set the image as the input
         input_tensor[:, :] = image
 
     @staticmethod
