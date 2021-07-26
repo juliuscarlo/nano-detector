@@ -21,7 +21,6 @@ from model import inference
 from model import label_loader
 from utils import image_transformer
 from utils import augmentor
-#from config import config
 from utils import image_loader
 from utils import xml_writer
 
