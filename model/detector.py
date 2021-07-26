@@ -21,7 +21,7 @@ from model import inference
 from model import label_loader
 from utils import image_transformer
 from utils import augmentor
-from config import config
+#from config import config
 from utils import image_loader
 from utils import xml_writer
 
@@ -35,7 +35,7 @@ class Detector(BaseClass):
 
     def __init__(self):
         """Initializes the logger and a tflite interpreter."""
-        super().__init__(config)
+        super().__init__()
 
         # Initialize the instance attributes of a Detector
         self.todays_date = None

@@ -12,7 +12,7 @@ from config import config
 
 class BaseClass(ABC):
     """The baseclass methods are overridden in the detector."""
-    def __init__(self, cfg):
+    def __init__(self):
         self.config = config.Config()
 
     @abstractmethod
