@@ -36,7 +36,7 @@ def run():
               detector.config.augmented_images_path)
 
     if args.mode == "view_logs":
-        os.system("tail -f -n 100 logs/detector.log")
+        os.system("tail -f -n 100 " + detector.config.logs_path)
 
     if args.mode == "annotate":
         detector.prepare_model()
