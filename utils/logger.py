@@ -35,5 +35,5 @@ class Logger:
     @staticmethod
     def current_time():
         """Returns the current timedate."""
-        now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        now = datetime.now().strftime("%Y/%m/%d %H:%M:%S.%f")
         return now
