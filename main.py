@@ -53,5 +53,6 @@ if __name__ == "__main__":
     try:
         run()
         print("Image Annotation System ran successfully in selected mode.")
-    except:
-        print("Error! Image Annotation System did not run successfully.")
+    except Exception as e:
+        print("Error! Image Annotation System did not run successfully due to:")
+        print(e)
